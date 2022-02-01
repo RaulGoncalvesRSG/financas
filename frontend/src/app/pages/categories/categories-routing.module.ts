@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CategoryFormComponent } from './category-form/category-form.component';
-import { CategoryListComponent } from './category-list/category-list.component';
+import { CategoryFormComponent } from './pages/categories/category-form/category-form.component';
+import { CategoryListComponent } from './pages/categories/category-list/category-list.component';
 
 const routes: Routes = [
   //Como já está dentro de "categories", coloca apenas a continuação da rota
