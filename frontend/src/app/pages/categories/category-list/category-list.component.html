@@ -22,6 +22,7 @@
   </div>
 </div>
 
+
 <table class="table table-hover">
   <thead>
     <!--backgroung primary com texto branco-->
@@ -39,7 +40,7 @@
       </td>
 
       <td>
-        <!--btn-outline tem borda azul em volta. sm deixa ele menor. mr (margin right)-->
+        <!--btn-outline tem borda azul em volta. sm deixa ele menor. mr (margin right-->
         <!--routerlink recebendo um array q contém pedaço da URL. Se n colocar aspas, o angular entende q é uma variável. O link é construiído: nome_site/categories/1/edit -->
         <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
         <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm">Excluir</button>

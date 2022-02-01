@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable, throwError } from "rxjs";
-import { map, catchError, flatMap } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
 
 import { Category } from "./category.model";
 
@@ -57,7 +57,9 @@ export class CategoryService {
     )
   }
 
-  // PRIVATE METHODS
+  //Métodos privados-------------------------------------
+  
+  /*O AngularInMemoryWebAPI devolve um objeto neutro (object) ou um array de objetos neutros (objects). O 'jsonDataToCategories' converte esse array de objetos neutros para objetos do tipo Category (de [object, object] para [category, category]. Com isso, vc tem acesso a métodos e atributos específicos dos objetos da classe Category.*/
   private jsonDataToCategories(jsonData: any[]): Category[] {
     const categories: Category[] = [];
     jsonData.forEach(element => categories.push(element as Category));      //Converte a lista de  Json em lista de Category
