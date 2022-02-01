@@ -1,3 +1,50 @@
-<p>
-  category-list works!
-</p>
+<!--mb - margin botton-->
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Categorias</li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+  <!--col-md possui um tamanho suficiente para caber na row os itens de dentro dele-->
+  <div class="col-md">
+    <!--pl2 - padding left 2-->
+    <h1 class="h2 border-left pl-2">
+      Categorias
+    </h1>
+  </div>
+  <div class="col-md">
+    <!--float-rigth para o btn flutuar na direita-->
+    <a routerLink="new" class="btn btn-success float-right">
+      + Nova Categoria
+    </a>
+  </div>
+</div>
+
+
+<table class="table table-hover">
+  <thead>
+    <!--backgroung primary com texto branco-->
+    <tr class="bg-primary text-light">
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td>
+        <strong>{{category.name}}</strong><br>
+        <small>{{category.description}}</small>
+      </td>
+
+      <td>
+        <!--btn-outline tem borda azul em volta. sm deixa ele menor. mr (margin right)-->
+        <!--routerlink recebendo um array q contém pedaço da URL. Se n colocar aspas, o angular entende q é uma variável. O link é construiído: nome_site/categories/1/edit -->
+        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
