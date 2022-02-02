@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { EntriesRoutingModule } from './entries-routing.module';
 
 import { EntryListComponent } from "./entry-list/entry-list.component";
+import { EntryFormComponent } from './entry-form/entry-form.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { EntryListComponent } from "./entry-list/entry-list.component";
     EntriesRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [EntryListComponent]
+  declarations: [EntryListComponent, EntryFormComponent]
 })
 export class EntriesModule { }

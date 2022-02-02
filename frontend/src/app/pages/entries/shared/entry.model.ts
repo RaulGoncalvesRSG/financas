@@ -19,6 +19,7 @@ export class Entry {
     renevue: 'Receita'
   };
 
+  //Função com o get utiliza dessa forma: object.paidText. Sem o get utiliza dessa forma: object.paidText()
   get paidText(): string {
     return this.paid ? 'Pago' : 'Pedente';
   }
