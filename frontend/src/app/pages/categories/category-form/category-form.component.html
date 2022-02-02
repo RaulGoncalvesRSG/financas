@@ -9,7 +9,7 @@
 <div class="row mb-4">
   <div class="col-md">
     <h1 class="h2 border-left pl-2">
-      Formulário de categoria
+      Formulário de categoria {{ currentAction }}
     </h1>
   </div>
   <div class="col-md">
@@ -19,8 +19,8 @@
   </div>
 </div>
 
-<!--[formGroup]="categoryForm"-->
-<form >
+<!--É preciso informar o formGroup no form do Angular-->
+<form [formGroup]="categoryForm">
 
   <div class="card">
     <div class="card-header">Informações sobre a categoria</div>
@@ -40,8 +40,8 @@
     </div>
 
   </div>
-  <!--btn-lg (btn grande), float-right (flutua na dir), mt-3 (margin top 3)-->
-  <button type="submit" class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
+  <!--Btn desabilitado qnd estiver submetendo ou com dados inválidos. btn-lg (btn grande), float-right (flutua na dir), mt-3 (margin top 3)-->
+  <button [disabled]="submittingForm || resourceForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
 
 </form>
 
