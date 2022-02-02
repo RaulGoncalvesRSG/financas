@@ -8,16 +8,16 @@ export class Entry {
     public type?: string,
     public amount?: string,
     public date?: string,
-    public paid?: boolean,                  //Se está pago
+    public paid?: boolean,        //Se está pago ou n
     public categoryId?: number,
     public category?: Category
   ){ }
 
   //Dois tipos possíveis
-    static types = {
+  static types = {      
     expense: 'Despesa',
     renevue: 'Receita'
-    };
+  };
 
   get paidText(): string {
     return this.paid ? 'Pago' : 'Pedente';
