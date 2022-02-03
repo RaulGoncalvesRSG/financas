@@ -16,7 +16,7 @@ export class Entry {
   //Dois tipos possíveis
   static types = {      
     expense: 'Despesa',
-    renevue: 'Receita'
+    revenue: 'Receita'
   };
 
   //Função com o get utiliza dessa forma: object.paidText. Sem o get utiliza dessa forma: object.paidText()
