@@ -9,18 +9,18 @@ import { switchMap } from "rxjs/operators";
 
 import toastr from "toastr";
 
-
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked{
   
-  currentAction: string;
-  resourceForm: FormGroup;
-  pageTitle: string;
-  serverErrorMessages: string[] = null;
+  currentAction: string;              //ação q identifica se está editando ou criando o obj
+  resourceForm: FormGroup;            //Responsável pelo formulário em si
+  pageTitle: string;                   //msg q informa se está editando ou criando o obj
+  serverErrorMessages: string[] = null;     //Msgs de erro retornada pelo servidor
+  //bloqueia o btn após submeter o form, isso eveita q o usuário faça várias requisições. O btn é liberado novamente depois q o servidor retornar uma resposta
   submittingForm: boolean = false;
 
   protected route: ActivatedRoute;
   protected router: Router;
-  protected formBuilder: FormBuilder;
+  protected formBuilder: FormBuilder;         //construtor de formulário
 
   constructor(
     //Para fazer as configurações das dependências q tds formulários terão: ActivatedRoute, Router e FormBuilder
@@ -43,7 +43,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.loadResource();
   }
 
-  ngAfterContentChecked(){
+  ngAfterContentChecked(){          //É chamado após o carregamento de tds os dados
     this.setPageTitle();
   }
 
@@ -57,24 +57,25 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
 
-  // PRIVATE METHODS
+  //Define qual é a ação, se está criando ou editando um obj
   protected setCurrentAction() {
-    if(this.route.snapshot.url[0].path == "new")
+    //route.snapshot.url devolve um array contendo tds segmentos da url a partir da url base do módulo (categories): categories/1/edit ou categories/new
+    if(this.route.snapshot.url[0].path == "new")      //nome_recurso/new. Ex: categories/new
       this.currentAction = "new"
     else
-      this.currentAction = "edit"
+      this.currentAction = "edit"                     //nome_recurso/1/edit
   }
 
   protected loadResource() {
     if (this.currentAction == "edit") {
       
       this.route.paramMap.pipe(
-        switchMap(params => this.resourceService.getById(+params.get("id")))
+        switchMap(params => this.resourceService.getById(+params.get("id")))    //"+" converte o parâmetro em número
       )
       .subscribe(
         (resource) => {
           this.resource = resource;
-          this.resourceForm.patchValue(resource) // binds loaded resource data to resourceForm
+          this.resourceForm.patchValue(resource)      //Seta os valores da categoria no formulário para poder editar
         },
         (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
       )
@@ -119,9 +120,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   
   protected actionsForSuccess(resource: T){
     toastr.success("Solicitação processada com sucesso!");
-
     const baseComponentPath: string = this.route.snapshot.parent.url[0].path;        //Pega a rota pai da página. Ex: "categories", "entry"
 
+    /*Força o recarregamento do componente para q tds variáveis sejam setadas novamente como se estivesse inicializando o form. O componente criado é recarregado em modo de edição
+      nomesite.com/categories/new
+      nomesite.com/categories
+      nomesite.com/categories/:id/edit */
+    //skipLocationChange: true indica para n add essa navegação para o categories no histórico de navegação do navegador
     //Redireciona para a página do component
     this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true}).then(
         //Tem ID pq o recurso herda do BaseResourceModel, faz um redirecionamento de forma genérica de acordo com o baseComponentPath
@@ -134,12 +139,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     this.submittingForm = false;
 
+    //OBS: o tratamento de erro é de acordo com o backend utilizado
     if(error.status === 422)
       this.serverErrorMessages = JSON.parse(error._body).errors;
     else
       this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
   }
 
-  //Cada formulário possui suas confingurações de campos específicas. Métodos abstratos em classes abstratas é como se fosse um contrato assinado, a classe q está herdando é obrigada a implementar este método
+  //Constrói o formulário. Cada formulário possui suas confingurações de campos específicas. Métodos abstratos em classes abstratas é como se fosse um contrato assinado, a classe q está herdando é obrigada a implementar este método
   protected abstract buildResourceForm(): void;
 }
