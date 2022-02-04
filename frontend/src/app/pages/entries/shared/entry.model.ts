@@ -22,6 +22,10 @@ export class Entry extends BaseResourceModel {
     revenue: 'Receita'
   };
 
+  static fromJson(jsonData: any): Entry {
+    return Object.assign(new Entry(), jsonData);      //Retorna uma instância do obj a partir do json
+  }
+
   //Função com o get utiliza dessa forma: object.paidText. Sem o get utiliza dessa forma: object.paidText()
   get paidText(): string {
     return this.paid ? 'Pago' : 'Pedente';
