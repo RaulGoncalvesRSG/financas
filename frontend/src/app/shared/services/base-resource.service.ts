@@ -6,15 +6,14 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 
-//extends BaseResourceModel para o recourse do tipo T poder acessar o ID
 export abstract class BaseResourceService<T extends BaseResourceModel> {
 
   protected http: HttpClient;
 
-   /*apiPath - Qnd trabalha com dados em memória, por padrão utiliza o api/nome_recurso
-   Injector - serviço do próprio Angular q é responsável por injetar as dependências. Vc pega um obj do tipo q deseja e verifica se já existe um obj instanciado, caso n, ele cria no momento */
   constructor(
+    //apiPath - ex: api/categories
     protected apiPath: string, 
+    //Injector - serviço do próprio Angular q é responsável por injetar as dependências. Vc pega um obj do tipo q deseja e verifica se já existe um obj instanciado, caso n, ele cria no momento
     protected injector: Injector,
     //Função q recebe um json e revolve o tipo T (converte o json em uma instância do obj)
     protected jsonDataToResourceFn: (jsonData: any) => T
@@ -65,7 +64,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     )
   }
 
-  //Métodos PROTECTED-------------------------------------  
+  //Métodos PROTECTED-------------------------------------------------------------------------------------
    /*O AngularInMemoryWebAPI devolve um objeto neutro (object) ou um array de objetos neutros (objects). O 'jsonDataToCategories' converte esse array de objetos neutros para objetos do tipo Category (de [object, object] para [category, category]. Com isso, vc tem acesso a métodos e atributos específicos dos objetos da classe Category.*/
   protected jsonDataToResources(jsonData: any[]): T[] {
     const resources: T[] = [];

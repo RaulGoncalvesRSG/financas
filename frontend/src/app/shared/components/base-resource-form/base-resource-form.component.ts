@@ -9,13 +9,14 @@ import { switchMap } from "rxjs/operators";
 
 import toastr from "toastr";
 
+//Classe base para formulários da aplicação
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked{
   
-  currentAction: string;              //ação q identifica se está editando ou criando o obj
-  resourceForm: FormGroup;            //Responsável pelo formulário em si
-  pageTitle: string;                   //msg q informa se está editando ou criando o obj
-  serverErrorMessages: string[] = null;     //Msgs de erro retornada pelo servidor
-  //bloqueia o btn após submeter o form, isso eveita q o usuário faça várias requisições. O btn é liberado novamente depois q o servidor retornar uma resposta
+  currentAction: string;                //ação q identifica se está editando ou criando o obj
+  resourceForm: FormGroup;              //Responsável pelo formulário em si
+  pageTitle: string;                    //msg de título da pag
+  serverErrorMessages: string[] = null;     //Msgs de erro retornadas pelo servidor
+  //bloqueia o btn após submeter o form, isso evita o usuário fazer várias requisições. O btn é liberado novamente depois q o servidor retornar uma resposta
   submittingForm: boolean = false;
 
   protected route: ActivatedRoute;
@@ -45,25 +46,28 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   ngAfterContentChecked(){          //É chamado após o carregamento de tds os dados
     this.setPageTitle();
-  }
+  }c
 
   submitForm(){
     this.submittingForm = true;
 
-    if(this.currentAction == "new")
+    if(this.currentAction == "new") {
       this.createResource();
-    else // currentAction == "edit"
+    }
+    else {                // currentAction == "edit"
       this.updateResource();
+    }
   }
-
 
   //Define qual é a ação, se está criando ou editando um obj
   protected setCurrentAction() {
     //route.snapshot.url devolve um array contendo tds segmentos da url a partir da url base do módulo (categories): categories/1/edit ou categories/new
-    if(this.route.snapshot.url[0].path == "new")      //nome_recurso/new. Ex: categories/new
+    if(this.route.snapshot.url[0].path == "new"){     //nome_recurso/new. Ex: categories/new
       this.currentAction = "new"
-    else
+    }
+    else {
       this.currentAction = "edit"                     //nome_recurso/1/edit
+    }
   }
 
   protected loadResource() {
@@ -71,8 +75,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       
       this.route.paramMap.pipe(
         switchMap(params => this.resourceService.getById(+params.get("id")))    //"+" converte o parâmetro em número
-      )
-      .subscribe(
+      ).subscribe(
         (resource) => {
           this.resource = resource;
           this.resourceForm.patchValue(resource)      //Seta os valores da categoria no formulário para poder editar
@@ -120,14 +123,15 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   
   protected actionsForSuccess(resource: T){
     toastr.success("Solicitação processada com sucesso!");
-    const baseComponentPath: string = this.route.snapshot.parent.url[0].path;        //Pega a rota pai da página. Ex: "categories", "entry"
+    //Pega a rota pai da página. Se está na rota "categories/new", pega o "categories"
+    const baseComponentPath: string = this.route.snapshot.parent.url[0].path;        
 
     /*Força o recarregamento do componente para q tds variáveis sejam setadas novamente como se estivesse inicializando o form. O componente criado é recarregado em modo de edição
       nomesite.com/categories/new
       nomesite.com/categories
       nomesite.com/categories/:id/edit */
-    //skipLocationChange: true indica para n add essa navegação para o categories no histórico de navegação do navegador
-    //Redireciona para a página do component
+    
+      //Redireciona para a página do component. skipLocationChange: true indica para n add essa navegação para o categories no histórico de navegação do navegador
     this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true}).then(
         //Tem ID pq o recurso herda do BaseResourceModel, faz um redirecionamento de forma genérica de acordo com o baseComponentPath
       () => this.router.navigate([baseComponentPath, resource.id, "edit"])            
@@ -136,14 +140,15 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   protected actionsForError(error){
     toastr.error("Ocorreu um erro ao processar a sua solicitação!");
-
     this.submittingForm = false;
 
     //OBS: o tratamento de erro é de acordo com o backend utilizado
-    if(error.status === 422)
+    if(error.status === 422) {
       this.serverErrorMessages = JSON.parse(error._body).errors;
-    else
+    } 
+    else {
       this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
+    }
   }
 
   //Constrói o formulário. Cada formulário possui suas confingurações de campos específicas. Métodos abstratos em classes abstratas é como se fosse um contrato assinado, a classe q está herdando é obrigada a implementar este método

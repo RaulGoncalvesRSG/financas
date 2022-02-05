@@ -13,4 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ]
 })
+
+//SharedModule guarda partes do sistema que podem ou não ser utilizado por algum outro componente principal (não são obrigatórios). O SharedModule não é importado no app.module, ele é importado no module de um page (ex: categories.module)
 export class SharedModule { }

@@ -24,4 +24,6 @@ import { InMemoryDatabase } from "../in-memory-database";
     HttpClientModule,
   ]
 })
+
+//Core guarda componentes, models, serviços, guards, partes do projeto que são obrigatórios para o funcionamento do sistema. O CoreModule será importado no app.module.
 export class CoreModule { }
