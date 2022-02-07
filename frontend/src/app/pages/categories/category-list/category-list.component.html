@@ -1,10 +1,6 @@
-<!--mb - margin botton-->
-<nav class="mb-5">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-    <li class="breadcrumb-item active">Categorias</li>
-  </ol>
-</nav>
+<app-bread-crumb
+  [items]="[{text: 'Categorias'}]">
+</app-bread-crumb>
 
 <div class="row mb-4">
   <!--col-md possui um tamanho suficiente para caber na row os itens de dentro dele-->

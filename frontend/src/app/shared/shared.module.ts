@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -10,11 +11,13 @@ import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.compon
   imports: [
     CommonModule,
     ReactiveFormsModule,    //Para poder usar form do Angular
+    RouterModule,
   ],
   exports: [        //tds os módulos q importam o SharedModule tem acesso aos componentes do exports
     //Shared modules
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     
     //Shared components
     BreadCrumbComponent,
