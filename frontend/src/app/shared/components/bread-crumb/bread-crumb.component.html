@@ -1,0 +1,21 @@
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <!--Item fixo-->
+    <li class="breadcrumb-item">
+      <a routerLink="/">Home</a>
+    </li>
+
+    <!--Itens dinâmicos. Active só é mostrado se for último item da lista. O item ativo é o item q será exibido para o usuário-->
+    <li *ngFor="let item of items" class="breadcrumb-item" [class.active]="isTheLastItem(item)">
+      <!--Se for o último, mostra tem apenas o texto-->
+      <span *ngIf="isTheLastItem(item)">
+        {{item.text}}
+      </span>
+
+      <!--Se n for o último, exibe um link para o usuário clicar e navegar-->
+      <a *ngIf="!isTheLastItem(item)" [routerLink]="item.link">
+        {{item.text}}
+      </a>
+    </li>
+  </ol>
+</nav>
