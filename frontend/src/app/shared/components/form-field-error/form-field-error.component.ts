@@ -13,7 +13,7 @@ import { FormControl } from "@angular/forms";
 })
 export class FormFieldErrorComponent implements OnInit {
 
-  //Recebe um formControl como parâmetro
+  //Recebe um formControl como parâmetro. Input faz um parâmetro do html ser passado para o TS. A str dentro dos parêbteses indica a forma de entrada utilizada no html
   @Input('form-control') formControl: FormControl;
 
   constructor() { }
