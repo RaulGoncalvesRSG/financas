@@ -9,6 +9,7 @@ export class PageHeaderComponent implements OnInit {
 
   //O nome da propriedade dentro do input é oq o usuário irá passar como parâmetro. Ex: <tag [page-title] = "valor"/>
   @Input('page-title') pageTitle: string;
+  //Sempre q chamar este componente, por padrão, este btn será apresentado
   @Input('show-button') showButton: boolean = true;
   @Input('button-class') buttonClass: string;
   @Input('button-text') buttonText: string;

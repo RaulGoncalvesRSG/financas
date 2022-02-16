@@ -1,12 +1,12 @@
 <div class="row mb-4">
-  <!--col-md possui um tamanho suficiente para caber na row os itens de dentro dele-->
+  <!--col-md especifica a largura. Ele possui um tamanho suficiente para caber na row os itens de dentro dele-->
   <div class="col-md-9">
     <!--pl2 - padding left 2-->
     <h1 class="h2 border-left pl-2">
       {{pageTitle}}
     </h1>
   </div>
-  <!--text-right faz o btn flutuar para a direita-->
+  <!--Mostra o btn apenas se a condição de visualização for true. text-right faz o btn flutuar para a direita-->
   <div *ngIf="showButton" class="col-md-3 text-right">
     <!--[ngClass] pega uma propriedade de forma dinâmica q contém a classe q será adicionada na tag-->
     <a [routerLink]="buttonLink" class="btn" [ngClass]="buttonClass">
