@@ -52,8 +52,8 @@ export class ReportsComponent implements OnInit {
   anos: string[] = ["2018", "2019", "2020", "2021", "2022"];
   ngSelect = "Selecione um ano"
 
-  @ViewChild('month') month: ElementRef = null;
-  @ViewChild('year') year: ElementRef = null;
+  @ViewChild('month', { static: true }) month: ElementRef = null;
+  @ViewChild('year', { static: true }) year: ElementRef = null;
 
   constructor(private entryService: EntryService, private categoryService: CategoryService) { }
 
