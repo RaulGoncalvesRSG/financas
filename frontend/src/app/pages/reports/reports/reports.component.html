@@ -18,7 +18,7 @@
         <label for="month">Mês</label>
 
         <select #month name="month" id="month" class="form-control">
-          <option value="" disabled>Selecione um mês</option>
+          <option value="">Selecione um mês</option>
           <option *ngFor="let mes of meses" [value]="mes.valor">{{ mes.nome }}</option>
         </select>
       </div>
@@ -28,7 +28,7 @@
         <label for="year">Ano</label>
 
         <select #year name="year" id="year" class="form-control">
-          <option value="" disabled>Selecione um ano</option>
+          <option value="">Selecione um ano</option>
           <option *ngFor="let ano of anos" [selected]="ano === ngSelect" [value]="ano">{{ ano }}</option>
         </select>  
       </div>
