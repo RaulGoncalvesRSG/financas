@@ -35,6 +35,23 @@ export class ReportsComponent implements OnInit {
   categories: Category[] = [];
   entries: Entry[] = [];
 
+  meses = [
+    { nome: "Janeiro", valor: '1'},
+    { nome: "Fevereiro", valor: '2'},
+    { nome: "Março", valor: '3'},
+    { nome: "Abril", valor: '4'},
+    { nome: "Maio", valor: '5'},
+    { nome: "Junho", valor: '6'},
+    { nome: "Julho", valor: '7'},
+    { nome: "Agosto", valor: '8'},
+    { nome: "Setembro", valor: '9'},
+    { nome: "Outubro", valor: '10'},
+    { nome: "Novembro", valor: '11'},
+    { nome: "Dezembro", valor: '12'},
+  ]
+  anos: string[] = ["2018", "2019", "2020", "2021", "2022"];
+  ngSelect = "Selecione um ano"
+
   @ViewChild('month') month: ElementRef = null;
   @ViewChild('year') year: ElementRef = null;
 
