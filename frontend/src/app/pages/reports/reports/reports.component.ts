@@ -49,7 +49,8 @@ export class ReportsComponent implements OnInit {
     { nome: "Novembro", valor: '11'},
     { nome: "Dezembro", valor: '12'},
   ]
-  anos: string[] = ["2018", "2019", "2020", "2021", "2022"];
+
+  anos: any[];
   ngSelect = "Selecione um ano"
 
   @ViewChild('month', { static: true }) month: ElementRef = null;
@@ -58,8 +59,13 @@ export class ReportsComponent implements OnInit {
   constructor(private entryService: EntryService, private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categoryService.getAll().subscribe(categories => 
-      this.categories = categories);
+    this.categoryService.getAll().subscribe(categories => this.categories = categories);
+    this.inicializarAnos();
+  }
+
+  inicializarAnos(){
+    var anoAtual = new Date().getFullYear();
+    this.anos = [anoAtual-4, anoAtual-3, anoAtual-2, anoAtual-1, anoAtual]
   }
 
   generateReports() {

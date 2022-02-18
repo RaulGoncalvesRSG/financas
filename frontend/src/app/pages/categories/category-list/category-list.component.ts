@@ -5,6 +5,8 @@ import { BaseResourceListComponent } from "../../../shared/components/base-resou
 import { Category } from "../shared/category.model";
 import { CategoryService } from "../shared/category.service";
 
+//import {PaginatorModule} from 'primeng/paginator';
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
