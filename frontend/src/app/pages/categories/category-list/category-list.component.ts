@@ -28,7 +28,7 @@ export class CategoryListComponent extends BaseResourceListComponent<Category> {
     var lin = 100, col = 60, incrementa = 20
     this.resources = this.resources.sort((a,b) => a.id - b.id);       //Ordena por ID de forma crescente
 
-    var pageHeight = this.documentPDF.internal.pageSize.height;
+    //var pageHeight = this.documentPDF.internal.pageSize.height;
 
     this.resources.forEach(obj => {
       this.adicionarObjNoPDF(obj, lin, col, incrementa)
@@ -44,8 +44,6 @@ export class CategoryListComponent extends BaseResourceListComponent<Category> {
     this.documentPDF.setFont("Helvertica", "bold");                   //Negrito
     this.documentPDF.text("Lista de Categorias", 240, 45);            //Título inicial da pag
     this. documentPDF.setFont("Helvertica", "normal");
-
-    this.documentPDF.auto
   }
 
   adicionarObjNoPDF(obj: Category, lin: number, col: number, incrementa: number) {
