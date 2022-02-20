@@ -8,7 +8,6 @@ import { FormFieldErrorComponent } from './components/form-field-error/form-fiel
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
 import { ReportCategoryComponent } from './components/reports_pdf/report-category/report-category.component';
 import { ReportEntryComponent } from './components/reports_pdf/report-entry/report-entry.component';
-import { BaseReportPdfListComponent } from './components/reports_pdf/base-report-pdf-list/base-report-pdf-list.component';
 
 @NgModule({
   declarations: [                 //Casses abstratas não são adicionadas no NgModule
@@ -18,7 +17,6 @@ import { BaseReportPdfListComponent } from './components/reports_pdf/base-report
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
     ReportEntryComponent,
-  //  BaseReportPdfListComponent,
     
   ],
   imports: [
@@ -39,7 +37,6 @@ import { BaseReportPdfListComponent } from './components/reports_pdf/base-report
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
     ReportEntryComponent,
-  //  BaseReportPdfListComponent,
   ]
 })
 
