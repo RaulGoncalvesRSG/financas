@@ -18,7 +18,7 @@ import { BaseReportPdfListComponent } from './components/reports_pdf/base-report
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
     ReportEntryComponent,
-    BaseReportPdfListComponent,
+  //  BaseReportPdfListComponent,
     
   ],
   imports: [
@@ -39,7 +39,7 @@ import { BaseReportPdfListComponent } from './components/reports_pdf/base-report
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
     ReportEntryComponent,
-    BaseReportPdfListComponent,
+  //  BaseReportPdfListComponent,
   ]
 })
 

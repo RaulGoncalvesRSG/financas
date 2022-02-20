@@ -28,10 +28,10 @@ export class InMemoryDatabase implements InMemoryDbService  {
       { id: 14, name: 'Pagamento Pelo Projeto XYZ', categoryId: categories[4].id, category: categories[4], paid: true, date: "25/10/2022", amount: "2980,00", type: "revenue" } as Entry,
       { id: 19, name: 'Aluguel de Filme', categoryId: categories[2].id, category: categories[2], paid: false, date: "07/11/2022", amount: "15,00", type: "expense" } as Entry,
       { id: 21, name: 'Video Game da Filha', categoryId: categories[1].id, category: categories[1], paid: true, date: "17/11/2022", amount: "30,00", type: "expense" } as Entry,
-      { id: 22, name: 'Cinema', categoryId: categories[2].id, category: categories[2], paid: true, date: "18/11/2022", amount: "15,00", type: "expense" } as Entry,
+      { id: 22, name: 'Cinema', categoryId: categories[2].id, category: categories[2], paid: true, date: "18/11/2022", amount: "15,00", type: "expense", description: "Melhores filmes do ano" } as Entry,
       { id: 23, name: 'Jiu Jitsu', categoryId: categories[1].id, category: categories[1], paid: false, date: "21/11/2022", amount: "130,00", type: "expense" } as Entry,
       { id: 44, name: 'Uber', categoryId: categories[2].id, category: categories[2], paid: true, date: "28/11/2022", amount: "15,00", type: "expense" } as Entry,
-      { id: 55, name: 'Cinema', categoryId: categories[1].id, category: categories[1], paid: false, date: "28/11/2022", amount: "30,00", type: "expense" }  as Entry
+      { id: 55, name: 'Academia', categoryId: categories[1].id, category: categories[1], paid: false, date: "28/11/2022", amount: "30,00", type: "expense" }  as Entry
     ]
 
     return { categories, entries }

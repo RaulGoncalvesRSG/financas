@@ -9,7 +9,11 @@
   button-class="btn-success">
 </app-page-header>
 
-<app-report-entry></app-report-entry>
+<app-report-entry
+  title="Lançamentos"
+  [columns]="['ID', 'Nome', 'Descrição', 'Categoria',  'Valor', 'Data',  'Pago'  ]"
+  [width-columns]="['*', '*', '*', '*', '*', '*', '*']">
+</app-report-entry>
 
 <table class="table table-hover">
   <thead>
