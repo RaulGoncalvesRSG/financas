@@ -8,15 +8,18 @@ import { FormFieldErrorComponent } from './components/form-field-error/form-fiel
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
 import { ReportCategoryComponent } from './components/reports_pdf/report-category/report-category.component';
 import { ReportEntryComponent } from './components/reports_pdf/report-entry/report-entry.component';
+import { BaseReportPdfListComponent } from './components/reports_pdf/base-report-pdf-list/base-report-pdf-list.component';
 
 @NgModule({
-  declarations: [
-    BreadCrumbComponent,
+  declarations: [                 //Casses abstratas não são adicionadas no NgModule
+    BreadCrumbComponent, 
     PageHeaderComponent,
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
     ReportEntryComponent,
+    BaseReportPdfListComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { ReportEntryComponent } from './components/reports_pdf/report-entry/repo
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
     ReportEntryComponent,
+    BaseReportPdfListComponent,
   ]
 })
 

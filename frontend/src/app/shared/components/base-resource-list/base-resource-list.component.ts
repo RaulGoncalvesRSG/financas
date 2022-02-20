@@ -3,7 +3,7 @@ import { OnInit, Directive } from '@angular/core';
 import { BaseResourceModel } from "../../models/base-resource.model";
 import { BaseResourceService } from "../../services/base-resource.service";
 
-@Directive()
+@Directive()      //BaseResourceListComponent é uma classe do tipo T
 export abstract class BaseResourceListComponent<T extends BaseResourceModel> implements OnInit {
 
   resources: T[] = [];
