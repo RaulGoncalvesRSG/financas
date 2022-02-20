@@ -1,3 +1,20 @@
+# Sistema de Finanças
+O sistema faz cadastro de categorias e lançamentos. Cada lançamento possui uma determinada categoria. Além disso, é possível gerar um arquivo PDF contendo a lista de todas categorias ou lançamentos. Também é possível visualizar por meio de um gráfico, as despesas, receitas e saldo de um determinado mês do ano.
+
+## Tecnologias utilizadas
+* Angular 12 com TypeScript
+
+## Arquitetura utilizada
+O projeto utiliza a arquitetura Master Details, no qual tem como principal objetivo a generalização das classes, o qual as tornam reutilizáveis, evitando duplicação de código no sistema. No projeto é encontrado CRUD genérico, classe de serviços genérica, componentes reutilizáveis na aplicação, além da classe geradora do PDF (biblioteta pdfmake) também ser genérica.
+
+## Layout do sistema
+![Relatorio_1](imagens_sistema/relatorio_1.png)
+![Relatorio_1](imagens_sistema/relatorio_1.png)
+![Lista de Lançamentos](imagens_sistema/lancamentos_lista.png)
+![Cadastro de Lançamento](imagens_sistema/lancamentos_form.png)
+![PDF de Lançamentos](imagens_sistema/lancamentos_pdf.png)
+![Categorias](imagens_sistema/categorias_lista.png)
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.10.
