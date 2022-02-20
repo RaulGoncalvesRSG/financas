@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
-import { ReportCategoryComponent } from './components/reports_pdf/category/report-category.component';
+import { ReportCategoryComponent } from './components/reports_pdf/report-category/report-category.component';
+import { ReportEntryComponent } from './components/reports_pdf/report-entry/report-entry.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReportCategoryComponent } from './components/reports_pdf/category/repor
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
+    ReportEntryComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { ReportCategoryComponent } from './components/reports_pdf/category/repor
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
     ReportCategoryComponent,
+    ReportEntryComponent,
   ]
 })
 
