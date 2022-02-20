@@ -1,10 +1,11 @@
 import { Directive, Input } from '@angular/core';
 import { BaseResourceListComponent } from '../../base-resource-list/base-resource-list.component';
 
-@Directive()
+@Directive()        //http://pdfmake.org/playground.html
 export abstract class BaseReportPdfListComponent<T> extends BaseResourceListComponent<T> {
 
   @Input('title') title: string;
+  @Input('layout') layout: string = "lightHorizontalLines";
   @Input('columns') columns: string[] = [];
   @Input('width-columns') widthColumns: any[] = [];
 
@@ -20,7 +21,7 @@ export abstract class BaseReportPdfListComponent<T> extends BaseResourceListComp
   inicializarConfiguracoesDocument(){
     const docDefinitios = {
       pageSize: "A4",
-      pageMargins: [15, 50, 15, 40],    //left top right botton
+      pageMargins: [25, 50, 25, 40],    //left top right botton
 
       header: [this.reportTitle()],
       content: [this.details()],
@@ -33,9 +34,9 @@ export abstract class BaseReportPdfListComponent<T> extends BaseResourceListComp
     return {
       text: this.title,
       fontSize: 15,
-     // alignment: 'center',
       bold: true,
-      margin: [15, 20, 0, 45]
+      margin: [25, 20, 0, 45],
+      //alignment: 'center',
     }
   }
 
@@ -50,7 +51,7 @@ export abstract class BaseReportPdfListComponent<T> extends BaseResourceListComp
             ...this.getData()                   //Operador spread concatena as duas listas
           ]
         },
-        layout: "lightHorizontalLines"
+        layout: this.layout
       }
     ]
   }
@@ -58,7 +59,7 @@ export abstract class BaseReportPdfListComponent<T> extends BaseResourceListComp
   preencherColuna(){
     return this.columns.map((col) => {
       return [
-        {text: col, style: "tableHeader", fontSize: 10}
+        {text: col, style: "tableHeader", fontSize: 10, alignment: "left"}
       ]
     })
   }
